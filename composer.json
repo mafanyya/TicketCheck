@@ -1,0 +1,26 @@
+{
+    "name": "mpogo/ticket-check",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "mafanyya",
+            "email": "mafanya.nyaa@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^8.1",
+        "ext-mysqli": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Registration\\": "Classes/ClassesReg"
+
+
+        }
+    }
+
+}

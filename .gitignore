@@ -1,0 +1,9 @@
+#vendor ignore
+
+vendor/
+
+#IDE ignore
+
+.idea/
+
+111.php
