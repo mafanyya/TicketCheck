@@ -1,8 +1,21 @@
 <?php
-require __DIR__ . "/vendor/autoload.php";
-require_once "connect.php";
+namespace TicketCheck;
 
-function menu()
+require __DIR__ . "/vendor/autoload.php";
+
+$hostname = 'localhost';
+$username = 'root';
+$password = 'root';
+$database = 'ticketcheck';
+$connect = mysqli_connect($hostname,$username,$password,$database);
+
+if (!$connect) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+echo "Connected successfully";
+
+
+function menu($connect)
 {
     echo ("Welcome to the TicketCheck program! How we can help you??
 1) Ticket registration;
@@ -11,6 +24,7 @@ function menu()
 
 
     $TD = fgets(STDIN);
+
     switch ($TD) {
         case 1:
             ///РЕГИСТРАЦИЯ БИЛЕТА
@@ -38,6 +52,24 @@ function menu()
             $newGender->regGender();
             $newGender->getGender();
 
+            ////INSERT PASSENGER DATA////
+
+            $passenger= "INSERT INTO passengers (Last_Name,First_Name,Gender) VALUES ('$newSurname', '$newName', '$newGender')";
+
+            if(mysqli_query($connect, $passenger)){
+                echo "Records inserted successfully.";
+            } else{
+                echo "ERROR: Could not able to execute $passenger. " . mysqli_error($connect);
+            }
+            $selectId= "SELECT MAX(Passenger_id) FROM passengers";
+            $passenger_id = mysqli_query($connect,$selectId);
+
+            $row = mysqli_fetch_assoc($passenger_id);
+
+            var_dump($row);
+
+            $passenger_id = $row['MAX(Passenger_id)'];
+
 
             ////DATE////
 
@@ -64,6 +96,15 @@ function menu()
         $newDiscount ->isDiscount();
         $newDiscount ->getDiscount();
 
+            $booking= "INSERT INTO booking (Train_Nr, Passenger_ID, Date, Discount, Seat) 
+            VALUES ('$newTrain', '$passenger_id', '$newDate','$newDiscount','$newSeat')";
+
+            if(mysqli_query($connect, $booking)){
+                echo "Records inserted successfully.";
+            } else{
+                echo "ERROR: Could not able to execute $booking. " . mysqli_error($connect);
+            }
+
 
 
             echo("
@@ -84,11 +125,11 @@ function menu()
         default:
             ///ДРУГОЙ ОТВЕТ
             echo "Error, please enter the correct value " . PHP_EOL;
-            menu();
+            menu($connect);
     }
 }
 
-menu();
+menu($connect);
 
 
 

@@ -17,7 +17,9 @@
     },
     "autoload": {
         "psr-4": {
-            "Registration\\": "Classes/ClassesReg"
+            "Registration\\": "Classes/ClassesReg",
+            "TicketCheck\\": "connect.php"
+
 
 
         }

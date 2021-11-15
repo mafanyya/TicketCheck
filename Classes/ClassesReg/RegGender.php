@@ -24,9 +24,9 @@ class RegGender
     public function isValid(): void
     {
         switch ($this->gender){
-            case 1: $this->gender = "F";
+            case 1: $this->gender = "M";
             break;
-            case 2: $this->gender = "M";
+            case 2: $this->gender = "F";
             break;
             default:
                 echo("Value is invalid! ");
