@@ -107,15 +107,15 @@ function menu($connect)
 
 
 
-            echo("
-            Surname: $newSurname
-            Name: $newName
-            Date: $newDate
-            Gender: $newGender
-            Train: $newTrain
-            Seat: $newSeat
-            Discount: $newDiscount
-            ");
+//            echo("
+//            Surname: $newSurname
+//            Name: $newName
+//            Date: $newDate
+//            Gender: $newGender
+//            Train: $newTrain
+//            Seat: $newSeat
+//            Discount: $newDiscount
+//            ");
 
             break;
         case 2:
