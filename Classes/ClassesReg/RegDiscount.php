@@ -25,7 +25,7 @@ class RegDiscount
                 $this->regDiscount();
                 return true;
             case 2:
-                $this->discount = "NO";
+                $this->discount = 5;
                 return false;
             default:
                 echo("Value is invalid! ");
@@ -54,13 +54,13 @@ class RegDiscount
     public function isValid():void
     {
         switch($this->discount){
-            case 1: $this->discount = "Student";
+            case 1: $this->discount = 1;
             break;
-            case 2: $this->discount = "Senior citizen";
+            case 2: $this->discount = 2;
             break;
-            case 3: $this->discount = "Kid";
+            case 3: $this->discount = 3;
             break;
-            case 4: $this->discount = "Disable person";
+            case 4: $this->discount = 4;
             break;
             default:
                 echo("Value is invalid! ");

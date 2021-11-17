@@ -57,7 +57,7 @@ function menu($connect)
             $passenger= "INSERT INTO passengers (Last_Name,First_Name,Gender) VALUES ('$newSurname', '$newName', '$newGender')";
 
             if(mysqli_query($connect, $passenger)){
-                echo "Records inserted successfully.";
+                echo "...";
             } else{
                 echo "ERROR: Could not able to execute $passenger. " . mysqli_error($connect);
             }
@@ -66,7 +66,6 @@ function menu($connect)
 
             $row = mysqli_fetch_assoc($passenger_id);
 
-            var_dump($row);
 
             $passenger_id = $row['MAX(Passenger_id)'];
 
@@ -96,34 +95,23 @@ function menu($connect)
         $newDiscount ->isDiscount();
         $newDiscount ->getDiscount();
 
-            $booking= "INSERT INTO booking (Train_Nr, Passenger_ID, Date, Discount, Seat) 
+            $booking= "INSERT INTO booking (Train_Nr, Passenger_ID, Date, Discount_ID, Seat) 
             VALUES ('$newTrain', '$passenger_id', '$newDate','$newDiscount','$newSeat')";
 
             if(mysqli_query($connect, $booking)){
-                echo "Records inserted successfully.";
+                echo "Registration completed successfully.
+                
+               
+                ";
             } else{
                 echo "ERROR: Could not able to execute $booking. " . mysqli_error($connect);
             }
-
-
-
-//            echo("
-//            Surname: $newSurname
-//            Name: $newName
-//            Date: $newDate
-//            Gender: $newGender
-//            Train: $newTrain
-//            Seat: $newSeat
-//            Discount: $newDiscount
-//            ");
-
             break;
         case 2:
             ///ПРОВЕРКА БИЛЕТА
             echo "prow";
             break;
         default:
-            ///ДРУГОЙ ОТВЕТ
             echo "Error, please enter the correct value " . PHP_EOL;
             menu($connect);
     }

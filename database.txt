@@ -1,0 +1,53 @@
+create database TicketCheck;
+
+create table Passengers(
+    Passenger_ID int(10) AUTO_INCREMENT NOT NULL,
+    Last_Name varchar(50) NOT NULL,
+    First_Name varchar(50) NOT NULL,
+    Gender char(1) NOT NULL,
+    PRIMARY KEY (Passenger_ID)
+    
+);
+
+create table Trains(
+	Train_Nr int(3),
+    Class int(1),
+	Route varchar(20),
+	Arrival_Time(time),
+	Departure_Time(time),
+   
+    PRIMARY KEY (Train_Nr)
+);
+
+
+
+
+create table Discounts (
+	Discount_ID int(10),
+	Type varchar(10),
+	Discount varchar(5),
+
+	PRIMARY KEY (Discount_ID)
+
+);
+
+INSERT INTO discounts (Discount_ID, Type, Discount)
+    VALUES (1,"student","51%"),
+    (2,"senior citizen","51%"),
+    (3,"kids","20%"),
+    (4,"disabled person","90%"),
+    (5,"no","0%")
+
+
+create table booking (
+	Ticket_ID int(10) AUTO_INCREMENT,
+    Train_Nr int(2),
+    Passenger_ID int(10),
+    Date date,
+    Discount_ID int(10),
+	Seat int(3),
+	FOREIGN KEY (Discount_ID) REFERENCES Discounts(Discount_ID),
+    FOREIGN KEY (Train_Nr) REFERENCES Trains(Train_Nr),
+    FOREIGN KEY (Passenger_ID) REFERENCES Passengers(Passenger_ID),
+    PRIMARY KEY (Ticket_ID)
+);
